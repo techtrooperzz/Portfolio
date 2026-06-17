@@ -13,7 +13,8 @@ export const SMTPConfig = () => {
             user: process.env.SMTP_USER,
             pass: process.env.SMTP_PASS,
         },
-        html: true
+        html: true,
+        family: 4
     });
 };
 
