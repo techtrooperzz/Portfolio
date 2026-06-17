@@ -2,7 +2,6 @@ import React from 'react';
 import { TechTrooperzzLogo } from './TechTrooperzzLogo';
 import GradientText from './GradientText';
 import { Twitter, Dribbble, Palette } from 'lucide-react';
-import { Plasma } from './Plasma';
 
 interface FooterProps {
   onOpenBooking: () => void;
@@ -17,7 +16,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
       className="relative flex flex-col justify-between pt-12 pb-8 px-6 sm:px-12 bg-brand-dark overflow-hidden"
     >
       {/* Plasma Background Visual from React Bits */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none opacity-50 z-0">
+      {/* <div className="absolute inset-0 w-full h-full pointer-events-none opacity-50 z-0">
         <Plasma 
           color="#7c3aed" 
           speed={0.5} 
@@ -25,7 +24,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
           opacity={0.8} 
           mouseInteractive={true} 
         />
-      </div>
+      </div> */}
 
       {/* Centered CTA Content */}
       <div className="relative z-10 max-w-[1200px] mx-auto w-full flex flex-col items-center text-center">
