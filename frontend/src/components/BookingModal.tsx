@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import { TechTrooperzzLogo } from './TechTrooperzzLogo';
+import { sendEmail } from '../configAPI';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -53,6 +54,25 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
   }, [isOpen]);
 
   if (!isOpen) return null;
+
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+    try {
+        const bookingDetails = {
+            email,
+            name,
+            date: selectedDate,
+            time: selectedTime,
+        };
+
+        await sendEmail(bookingDetails);
+
+        setStep("SUCCESS");
+    } catch (err) {
+            console.error("Booking failed:", err);
+    }
+};
 
   // Calendar logic helpers
   const year = viewDate.getFullYear();
@@ -115,33 +135,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const bookingDetails = {
-      id: 'call_' + Date.now(),
-      name,
-      email,
-      date: selectedDate,
-      time: selectedTime,
-      notes: remarks,
-      createdTime: new Date().toISOString(),
-      timezone
-    };
-
-    try {
-      const existing = localStorage.getItem('portfolite_bookings');
-      const bookings = existing ? JSON.parse(existing) : [];
-      bookings.push(bookingDetails);
-      localStorage.setItem('portfolite_bookings', JSON.stringify(bookings));
-    } catch (err) {
-      console.error('Failed to cache booking locally', err);
-    }
-
-    setStep('SUCCESS');
-  };
-
-  const handleReset = () => {
+const handleReset = () => {
     setName('');
     setEmail('');
     setRemarks('');
@@ -151,7 +145,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
     setActiveSlot('02:30 PM');
     setStep('CALENDAR');
     onClose();
-  };
+};
 
   const monthNames = [
     'January', 'February', 'March', 'April', 'May', 'June',
@@ -236,11 +230,12 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
 
               {/* Timezone Switcher */}
               <div className="mt-4 md:mt-0 pt-2.5 border-t border-brand-border/40">
-                <label className="block text-[9px] text-brand-text-muted font-bold font-mono tracking-wider uppercase mb-1">
+                <label htmlFor="timezone-select" className="block text-[9px] text-brand-text-muted font-bold font-mono tracking-wider uppercase mb-1">
                   Select Timezone
                 </label>
                 <div className="relative">
                   <select
+                    id="timezone-select"
                     value={timezone}
                     onChange={(e) => setTimezone(e.target.value)}
                     className="w-full bg-white/5 border border-white/10 hover:border-white/20 rounded-lg px-2 py-1 text-white text-xs focus:outline-none cursor-pointer transition-colors appearance-none font-medium pr-7"
@@ -487,7 +482,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
               </div>
 
               {/* Core Requirements */}
-              <div>
+              {/* <div>
                 <label className="block text-white text-[9px] font-sans uppercase tracking-wider mb-1 font-bold">
                   Core Project Requirements
                 </label>
@@ -498,7 +493,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
                   rows={2} 
                   className="w-full bg-black/40 border border-brand-border rounded-xl px-2.5 py-1.5 text-white font-sans text-xs focus:outline-none focus:border-white/40 resize-none transition-colors"
                 />
-              </div>
+              </div> */}
 
               {/* Submit */}
               <button 
