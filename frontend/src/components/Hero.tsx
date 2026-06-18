@@ -46,7 +46,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onScrollToSection }) 
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="text-5xl sm:text-7xl md:text-8xl font-framer-text text-white max-w-[960px] tracking-tight leading-[1.05] mb-8"
+          className="text-4xl sm:text-7xl md:text-8xl font-face font-light text-white max-w-[960px] tracking-tight leading-[1.05] mb-8"
         >
             Engineering Innovation, Delivering Excellence <br />
         </motion.h1>

@@ -6,8 +6,8 @@
 
 @font-face {
   font-family: "Framer Text";
-  src: url("./assets/fonts/framer-text-5.woff2") format("woff2");
-  font-weight: normal;
+  src: url("./assets/fonts/framer-text.woff2") format("woff2");
+  /* font-weight: normal; */
   font-style: normal;
 }
 

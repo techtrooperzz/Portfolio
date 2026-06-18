@@ -38,8 +38,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, onScrollToSection
         borderRadius={9999}
         backgroundOpacity={0}
         saturation={1.3}
-        distortionScale={-80}
-        brightness={40}
+        distortionScale={-40}
+        redOffset={0}
+        greenOffset={0}
+        blueOffset={0}
+        brightness={50}
         className={`w-full transition-all duration-300 shadow-2xl shadow-black/45 ${
           isScrolled 
             ? 'py-2 border border-white/15 bg-[#121214]/90' 
