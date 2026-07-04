@@ -38,7 +38,7 @@ export default function App() {
       />
 
       {/* Main Sections */}
-      <main className="flex-grow select-text">
+      <main className="grow select-text">
         <Hero 
           onOpenBooking={handleOpenBooking} 
           onScrollToSection={handleScrollToSection} 

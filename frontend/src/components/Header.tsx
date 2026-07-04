@@ -11,6 +11,14 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ onOpenBooking, onScrollToSection }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,7 +36,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, onScrollToSection
   return (
     <header 
       id="navbar" 
-      className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-[calc(100%-2rem)] max-w-[840px] ${
+      className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-[calc(100%-2rem)] max-w-210 ${
         isScrolled ? 'top-4' : 'top-6'
       }`}
     >
@@ -38,12 +46,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, onScrollToSection
         borderRadius={9999}
         backgroundOpacity={0}
         saturation={1.3}
-        distortionScale={-40}
+        distortionScale={isMobile ? 0 : -40}
         redOffset={0}
         greenOffset={0}
         blueOffset={0}
-        brightness={50}
-        className={`w-full transition-all duration-300 shadow-2xl shadow-black/45 ${
+        brightness={isMobile ? 100 : 50}
+        className={`w-full backdrop-blur-xl md:backdrop-blur-none transition-all duration-300 shadow-2xl shadow-black/45 ${
           isScrolled 
             ? 'py-2 border border-white/15 bg-[#121214]/90' 
             : 'py-2.5 border border-white/10 bg-[#0B0B0C]/50'
