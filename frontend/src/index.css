@@ -38,13 +38,33 @@ body {
 }
 
 /* Grayscale high contrast image styling */
-.grayscale-img {
+/* .grayscale-img {
   filter: grayscale(100%) contrast(1.1) brightness(0.95);
   transition: filter 0.5s ease, transform 0.5s ease;
 }
 .grayscale-img:hover {
   filter: grayscale(0%) contrast(1.1) brightness(1.0);
   transform: scale(1.03);
+} */
+
+.grayscale-img {
+  filter: grayscale(100%) contrast(1.1) brightness(0.95);
+  transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+/* Desktop only */
+@media (hover: hover) and (pointer: fine) {
+  .grayscale-img:hover {
+    filter: grayscale(0%) contrast(1.1) brightness(1);
+    transform: scale(1.03);
+  }
+}
+
+/* Mobile / touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .grayscale-img {
+    filter: grayscale(0%) contrast(1.1) brightness(1);
+  }
 }
 
 /* Scrollbars */

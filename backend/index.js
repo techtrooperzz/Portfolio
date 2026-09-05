@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import emailRouter from "./routes/email.route.js";
+import sitemapRouter from "./routes/sitemap.route.js"
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.get("/", (_req, res) => {
 });
 
 app.use("/api/email", emailRouter);
+app.use("/api", sitemapRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
