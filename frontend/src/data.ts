@@ -250,7 +250,7 @@ export const testimonialsData = [
         quote: "We are pleased with the website delivered by the team. Their attention to detail, understanding of our needs, and commitment to quality resulted in a platform that beautifully represents Miranda House and supports our content management needs.",
         name: "Finance and Investment Club",
         role: "Miranda House",
-        avatar: "../assets/images/ficmh-logo.jpg",
+        avatar: "/images/ficmh-logo.jpg",
         rating: 5.0
     },
     {
@@ -258,7 +258,7 @@ export const testimonialsData = [
         quote: "We appreciate the team’s efforts in developing a website that streamlines student data management for our institution. The platform is intuitive, easy to use, and has significantly improved the way we handle student information.",
         name: "Gokhale Memorial Girls' School",
         // role: "Design Director, Aether Lab",
-        avatar: "../assets/images/Gokhale-logo.jpg",
+        avatar: "/images/Gokhale-logo.jpg",
         rating: 5.0
     },
 ];
