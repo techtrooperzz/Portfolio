@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://techtrooperzz.in/sitemap.xml
